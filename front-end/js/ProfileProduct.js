@@ -25,6 +25,7 @@
 
         document.addEventListener('DOMContentLoaded', function () {
             var productId = localStorage.getItem('profileProductId');
+            var paymentCompleted = false;
             if (!productId) {
                 alert('Không tìm thấy chi tiết sản phẩm.');
                 window.location.href = 'HomePage.html';
@@ -48,6 +49,30 @@
                         document.getElementById('paymentAmount').value = totalPayment+".000" + " VND";
                         document.getElementById('paymentDetails').style.display = 'block';
                         document.getElementById('paymentButton').style.display = 'block';
+
+                        console.log(totalPayment);
+
+                        document.getElementById('paymentButton').addEventListener('click', function () {
+                            fetch("http://localhost:3000/create-checkout-session", {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                },
+                                body: JSON.stringify({
+                                    totalPayment: totalPayment, // Gửi tổng số tiền cần thanh toán
+                                }),
+                            })
+                            .then(res => {
+                                if (res.ok) return res.json()
+                                return res.json().then(json => Promise.reject(json))
+                            })
+                            .then(({ url }) => {
+                                window.location = url;
+                            })
+                            .catch(e => {
+                                console.error(e.error)
+                            });
+                        });
                     }
                 })
                 .catch(error => {
@@ -58,4 +83,7 @@
             document.getElementById('backToHomePageButton').addEventListener('click', function () {
                 window.location.href = 'HomePage.html';
             });
-        });
+
+           
+
+});

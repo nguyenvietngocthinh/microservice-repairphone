@@ -1,32 +1,45 @@
-const express = require('express');
-const stripe = require('stripe')('your-stripe-secret-key'); // Thay 'your-stripe-secret-key' bằng khóa bí mật của bạn từ Stripe
-const bodyParser = require('body-parser');
-const app = express();
-const PORT = process.env.PORT || 3000;
+require('dotenv').config()
 
-app.use(bodyParser.json());
+const express = require('express');
+const app = express();
+const cors = require("cors")
+
+app.use(express.json());
+
+app.use(
+  cors({
+    origin: "http://127.0.0.1:5500",
+  })
+)
+
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 app.post('/create-checkout-session', async (req, res) => {
-    const { totalPayment } = req.body;
+    try {
+        const totalPayment = req.body.totalPayment;
 
-    const session = await stripe.checkout.sessions.create({
-        payment_method_types: ['card'],
-        line_items: [{
-            price_data: {
-                currency: 'vnd',
-                product_data: {
-                    name: 'Product Payment',
+        const session = await stripe.checkout.sessions.create({
+            payment_method_types: ["card"],
+            mode: "payment",
+            line_items: [{
+                price_data: {
+                    currency: "vnd",
+                    product_data: {
+                        name: "Total Payment",
+                    },
+                    unit_amount: totalPayment * 1000, // Convert sang đơn vị cents
                 },
-                unit_amount: totalPayment,
-            },
-            quantity: 1,
-        }],
-        mode: 'payment',
-        success_url: 'http://localhost:3000/success.html',
-        cancel_url: 'http://localhost:3000/cancel.html',
-    });
-
-    res.json({ id: session.id });
+                quantity: 1, // Chỉ cần một mặt hàng với số tiền tổng cần thanh toán
+            }],
+            success_url: `http://127.0.0.1:5500/html/success.html`,
+            cancel_url: `http://127.0.0.1:5500/html/cancel.html`,
+        });
+        
+        res.json({url: session.url});
+    } catch (e) {
+        res.status(500).json({error: e.message});
+    }
 });
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+app.listen(3000)
