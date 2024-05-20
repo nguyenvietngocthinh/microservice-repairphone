@@ -1,0 +1,22 @@
+/* Tùy chỉnh CSS */
+.product-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.pending-border {
+    border: 1px solid gray;
+}
+
+.approved-border {
+    border: 1px solid yellow;
+}
+
+.finished-border {
+    border: 1px solid green;
+}
+
+.rejected-border {
+    border: 1px solid red;
+}

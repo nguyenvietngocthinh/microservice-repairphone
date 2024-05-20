@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cập nhật sản phẩm</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Cập nhật sản phẩm</h2>
+        <form id="updateProductForm">
+            <div class="form-group">
+                <label for="updateProductName">Tên máy</label>
+                <input type="text" class="form-control" id="updateProductNameInput">
+            </div>
+            <div class="form-group">
+                <label for="updateProductDescription">Mô tả lỗi hư</label>
+                <textarea class="form-control" id="updateProductDescriptionInput" readonly></textarea>
+            </div>
+            <div class="form-group">
+                <label for="updateProductStatus">Trạng thái</label>
+                <select class="form-control" id="updateProductStatusInput">
+                    <option value="LOW">Nhẹ</option>
+                    <option value="MEDIUM">Vừa</option>
+                    <option value="HIGH">Nặng</option>
+                    <option value="BROKEN">Hư</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="updateProductProcess">Tiến trình</label>
+                <select class="form-control" id="updateProductProcessInput">
+                    <option value="PENDING">Chờ xử lý</option>
+                    <option value="APPROVED">Đang sửa chữa</option>
+                    <option value="FINISHED">Hoàn thành</option>
+                    <option value="REJECTED">Từ chối</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="updateUserId">UserId</label>
+                <input type="number" class="form-control" id="updateUserIdInput" readonly>
+            </div>
+            <div class="form-group">
+                <label for="updateProductNotes">Ghi chú</label>
+                <textarea class="form-control" id="updateProductNotesInput"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="updateProductComponents">Linh kiện</label>
+                <div id="componentsContainer" style="border: 1px solid black;">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input component-checkbox" id="componentPin"
+                            data-component-name="Pin" data-price="100">
+                        <label class="form-check-label" for="componentPin">Pin (100)</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input component-checkbox" id="componentPin"
+                            data-component-name="Nút Nguồn" data-price="20">
+                        <label class="form-check-label" for="componentPin">Nút nguồn (20)</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input component-checkbox" id="componentPin"
+                            data-component-name="Camera" data-price="200">
+                        <label class="form-check-label" for="componentPin">Camera (200)</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input component-checkbox" id="componentLoa"
+                            data-component-name="Loa" data-price="50">
+                        <label class="form-check-label" for="componentLoa">Loa (50)</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input component-checkbox" id="componentKhungMay"
+                            data-component-name="Khung máy" data-price="200">
+                        <label class="form-check-label" for="componentKhungMay">Khung máy (200)</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input component-checkbox" id="componentManHinh"
+                            data-component-name="Màn hình" data-price="300">
+                        <label class="form-check-label" for="componentManHinh">Màn hình (300)</label>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary" id="updateProductButton">Lưu</button>
+            <button type="button" class="btn btn-secondary" id="backToAdminButton">Quay lại</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../js/UpdateProduct.js"></script>
+</body>
+
+</html>

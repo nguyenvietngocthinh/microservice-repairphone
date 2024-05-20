@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.register-box {
+    width: 350px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.register-heading {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* CSS để tạo nút "Quay lại" màu trắng và chữ đen */
+#back-button {
+    background-color: #ffffff;
+    color: #000000;
+
+    /* Thêm khoảng cách giữa hai nút */
+    border: 1px solid #000000;
+    /* Thêm viền đen */
+}
+
+/* Đảm bảo cả hai nút có cùng chiều rộng và độ rộng tối đa */
+.btn-block {
+    width: calc(50% - 10px);
+    /* Tính toán độ rộng dựa trên tỷ lệ */
+    max-width: 250px;
+    /* Độ rộng tối đa */
+    margin-right: 10px;
+    /* Thêm khoảng cách giữa các nút */
+}
+
+/* Đảm bảo nút "Đăng ký" nằm ở bên trái và "Quay lại" ở bên phải */
+.register-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.button {
+    display: flex;
+}
